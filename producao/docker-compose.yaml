@@ -5,9 +5,7 @@ volumes:
      name: geoserver-data_prod
    geo-db-data:
      name: geo-db-data_prod
-   geoserver-install-plugin:
-     name: geoserver-install-plugin_prod
-
+   
 services:
    db:
       image: kartoza/postgis:${POSTGIS_VERSION_TAG}
@@ -31,7 +29,6 @@ services:
       container_name: geoserver_app_prod
       volumes:
         - geoserver-data:/opt/geoserver/data_dir
-        - geoserver-install-plugin:/usr/local/tomcat/webapps/geoserver/WEB-INF/lib/
       ports:
         - ${GEOSERVER_PORT}:8080
         - ${GEOSERVER_PORT_HTTPS}:8443
@@ -51,9 +48,7 @@ services:
         - JKS_KEY_PASSWORD=${JKS_KEY_PASSWORD}
         - JKS_STORE_PASSWORD=${JKS_STORE_PASSWORD}
         - PKCS12_PASSWORD=${PKCS12_PASSWORD}
-        
-        
-      depends_on:
+depends_on:
         db:
           condition: service_healthy
       healthcheck:
