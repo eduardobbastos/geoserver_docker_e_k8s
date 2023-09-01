@@ -24,7 +24,12 @@ Este Docker Compose oferece os seguintes diferenciais:
 
 1. **Suporte HTTPS**: O ambiente configurado por este Docker Compose inclui suporte a HTTPS.
 
+![Aplicação executando na porta https](img/geoserver001.png)
+
+
 2. **Instalação de Plugins**: Além da configuração básica do GeoServer e do PostGIS, este ambiente também permite a instalação de plugins adicionais para estender a funcionalidade do GeoServer conforme necessário.
+
+![Aplicação executando plugins instalados](img/geoserver002.png)
 
 ## Estrutura de Diretórios
 
@@ -132,3 +137,5 @@ Após configurar o ambiente com sucesso, você pode acessar o GeoServer da segui
 3. Você será direcionado para a página de login do GeoServer. Use as credenciais configuradas nas variáveis de ambiente `GEOSERVER_ADMIN_USER` e `GEOSERVER_ADMIN_PASSWORD` no arquivo `.env`.
 
 4. Após o login bem-sucedido, você terá acesso ao painel de administração do GeoServer, onde poderá gerenciar camadas, configurações, dados e muito mais.
+
+![Aplicação executando](img/geoserver003.png)
