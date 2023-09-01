@@ -124,8 +124,8 @@ Após configurar o ambiente com sucesso, você pode acessar o GeoServer da segui
 
 2. Acesse o GeoServer pelo endereço:
 
-   - Para HTTP: `http://seu_servidor:${GEOSERVER_PORT}/geoserver`
-   - Para HTTPS: `https://seu_servidor:${GEOSERVER_PORT_HTTPS}/geoserver`
+   - Para HTTP: `http://seu_servidor/geoserver`
+   - Para HTTPS: `https://seu_servidor/geoserver`
 
    Certifique-se de substituir `seu_servidor` pelo endereço do servidor onde o Docker Compose está sendo executado. As portas podem variar com base nas configurações definidas no arquivo `.env`. As configurções definidas estão publicando a aplicação pelas portas 80 e 443, é possivel alterar esa configurações `.env` GEOSERVER_PORT e GEOSERVER_PORT_HTTPS respectivamente.
 
