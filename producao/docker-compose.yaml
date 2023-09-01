@@ -6,6 +6,7 @@ volumes:
    geo-db-data:
      name: geo-db-data_prod
    
+
 services:
    db:
       image: kartoza/postgis:${POSTGIS_VERSION_TAG}
@@ -29,6 +30,7 @@ services:
       container_name: geoserver_app_prod
       volumes:
         - geoserver-data:/opt/geoserver/data_dir
+        
       ports:
         - ${GEOSERVER_PORT}:8080
         - ${GEOSERVER_PORT_HTTPS}:8443
@@ -48,7 +50,9 @@ services:
         - JKS_KEY_PASSWORD=${JKS_KEY_PASSWORD}
         - JKS_STORE_PASSWORD=${JKS_STORE_PASSWORD}
         - PKCS12_PASSWORD=${PKCS12_PASSWORD}
-depends_on:
+        
+        
+      depends_on:
         db:
           condition: service_healthy
       healthcheck:
