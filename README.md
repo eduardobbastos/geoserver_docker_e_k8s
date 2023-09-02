@@ -45,7 +45,6 @@ O ambiente é organizado da seguinte forma:
 
 
 - `setup.sh`: Script para configuração inicial.
-- [setup.sh](./producao/setup.sh)
 
 - `docker-compose.yaml`: Arquivo de configuração para deploy dos containers.
 
@@ -53,7 +52,7 @@ O ambiente é organizado da seguinte forma:
 
 - `copy_geoserver_data.sh`: Script para restauração dos dados contidos Geoserver anterior, conteudo do diretorio data do GeoServer.
 
-## Docker Compose
+## Docker Compose :  [docker-compose.yaml](./producao/docker-compose.yaml)
 
 O arquivo `docker-compose.yaml` define dois serviços principais:
 
@@ -85,7 +84,7 @@ O arquivo `docker-compose.yaml` define dois serviços principais:
 
 ## Scripts
 
-### `setup.sh`
+### [setup.sh](./producao/setup.sh)
 Com o objetivo de auxíliar 
 Este script realiza todo o processo de criação do ambiente Geoserver se seu ambiente possuir o git, docker e docker-compose instalados
 
@@ -96,7 +95,7 @@ Este script realiza as seguintes etapas:
 3. Clona um repositório Git (presumivelmente com arquivos de configuração).
 4. Inicia o Docker Compose.
 
-### `copy_geoserver_data.sh`
+### [copy_geoserver_data.sh](./producao/copy_geoserver_data.sh)
 
 Este script realiza o seguinte:
 
@@ -105,7 +104,7 @@ Este script realiza o seguinte:
 3. Ajusta as permissões.
 4. Inicia os contêineres novamente.
 
-## Variáveis de Ambiente (.env)
+## Variáveis de Ambiente [.env](./producao/.env)
 
 O arquivo `.env` define várias variáveis de ambiente, incluindo informações sobre versões, portas, configurações do GeoServer, configurações do banco de dados e muito mais. Personalize estas variáveis conforme necessário para o seu ambiente.
 
