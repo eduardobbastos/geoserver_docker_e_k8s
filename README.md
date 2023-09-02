@@ -17,6 +17,7 @@ Este documento descreve a configuração e o uso do GeoServer com PostGIS usando
 5. [Variáveis de Ambiente (.env)](#variáveis-de-ambiente-env)
 6. [Uso](#uso)
 7. [Acesso ao GeoServer](#acesso-ao-geoserver)
+8. [Referência](#Referência)
 
 ## Diferenciais
 
@@ -44,6 +45,7 @@ O ambiente é organizado da seguinte forma:
 
 
 - `setup.sh`: Script para configuração inicial.
+- [setup.sh](./producao/setup.sh)
 
 - `docker-compose.yaml`: Arquivo de configuração para deploy dos containers.
 
@@ -139,3 +141,9 @@ Após configurar o ambiente com sucesso, você pode acessar o GeoServer da segui
 4. Após o login bem-sucedido, você terá acesso ao painel de administração do GeoServer, onde poderá gerenciar camadas, configurações, dados e muito mais.
 
 ![Aplicação executando](img/geoserver003.png)
+
+## Referência
+Este projeto empregou varios elementos presentes nestes projetos
+
+[GitHub do Projeto Docker GeoServer](https://github.com/kartoza/docker-geoserver)  
+[Docker Hub - Imagens do GeoServer](https://hub.docker.com/r/kartoza/geoserver/tags)
