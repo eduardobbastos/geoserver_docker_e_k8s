@@ -142,7 +142,7 @@ Após configurar o ambiente com sucesso, você pode acessar o GeoServer da segui
 ![Aplicação executando](img/geoserver003.png)
 
 ## Referência
-Este projeto empregou varios elementos presentes nestes projetos
+Este projeto empregou varios elementos presentes nestes projetos. Acesse os projetos que foram utilizados como referência em:
 
 [GitHub do Projeto Docker GeoServer](https://github.com/kartoza/docker-geoserver)  
 [Docker Hub - Imagens do GeoServer](https://hub.docker.com/r/kartoza/geoserver/tags)
