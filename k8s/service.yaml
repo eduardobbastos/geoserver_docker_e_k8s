@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: geoserver
+  namespace: geoserver
+spec:
+  selector:
+    app: geoserver
+  type: NodePort
+  
+  ports:
+  - name: porthttp
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 31880
+
+  - name: porthttps
+    protocol: TCP
+    port: 8443
+    targetPort: 8443  
+    nodePort: 31883
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+     

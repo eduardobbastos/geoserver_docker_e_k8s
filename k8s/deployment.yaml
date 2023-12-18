@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geoserver
+  namespace: geoserver
+spec:
+  selector:
+    matchLabels:
+      app: geoserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: geoserver
+    spec:
+      containers:
+      - name: geoserverdb
+        image: kartoza/postgis:latest
+        env:
+        - name: POSTGRES_DB
+          value: "gis,gwc"
+        - name: POSTGRES_USER
+          value: "kkk123"
+        - name: POSTGRES_PASS
+          value: "kkk123"
+        - name: ALLOW_IP_RANGE
+          value: "0.0.0.0/0"
+        - name: FORCE_SSL
+          value: "TRUE"
+        - name: POSTGRES_PORT
+          value: "32761"
+        resources:
+          limits:
+            memory: "1000Mi"
+            cpu: "2000m"
+        
+        ports:
+        - containerPort: 5432
+      
+      - name: geoserver
+        image: kartoza/geoserver:latest
+        env:
+        - name: GEOSERVER_ADMIN_PASSWORD
+          value: "Asdzxc123@#"
+        - name: GEOSERVER_ADMIN_USER
+          value: "admin"
+        - name: INITIAL_HEAP_OCCUPANCY_PERCENT
+          value: "45"  
+        - name: INITIAL_MEMORY
+          value: "1G"
+        - name: MAXIMUM_MEMORY
+          value: "1G" 
+        - name: GEOSERVER_CONTEXT_ROOT
+          value: "geoserver"
+        - name: SSL
+          value: "true"
+        - name: ENCODING
+          value: "UTF8" 
+        - name: TIMEZONE
+          value: "GMT"     
+        - name: HTTP_PORT
+          value: "8080"
+        - name: HTTPS_PORT
+          value: "8443"
+        - name: CHARACTER_ENCODING
+          value: "UTF-8"   
+        - name: TOMCAT_EXTRAS
+          value: "true"
+        
+        - name: CLUSTERING
+          value: "False"   
+        - name: ENABLE_JSONP
+          value: "true"    
+        - name: MAX_FILTER_RULES
+          value: "20"
+        - name: OPTIMIZE_LINE_WIDTH
+          value: "false"
+        - name: INSTALL_EXTENSIONS
+          value: "true "  
+        - name: STABLE_EXTENSIONS
+          value: "excel-plugin, mysql-plugin, oracle-plugin, importer,"
+        resources:
+          limits:
+            memory: "2000Mi"
+            cpu: "2000m"
+        ports:
+        - containerPort: 8080
+        - containerPort: 8443
+        
+        volumeMounts:
+        - mountPath: "/opt/geoserver"
+          name: volumegeo
+      volumes:
+      - name: volumegeo
+        emptyDir: {}
+        
+          
+        
+    

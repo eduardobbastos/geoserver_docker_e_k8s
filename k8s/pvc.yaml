@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volumegeo
+  namespace: geoserver
+  labels:
+    app: geoserver
+spec:
+  #Este item precisa ser adequado ao ambiente para realização correta do deploy.
+  storageClassName: groxo-default-storageclass
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
