@@ -46,7 +46,32 @@ Lista dos arquivos de configuração do Kubernetes presentes no diretório `k8s`
 
 ## Comandos Úteis
 
-Coleção de comandos úteis para a gestão dos recursos do Kubernetes, como visualização de logs e inspeção de containers.
+## Comandos Úteis
+
+Coleção de comandos úteis para a gestão dos recursos do Kubernetes, utilizando os arquivos no diretório `k8s`:
+
+- **Aplicar a Configuração do Namespace**:
+  - `kubectl apply -f k8s/namespace.yaml`
+
+- **Implantar o Geoserver e o Banco de Dados**:
+  - `kubectl apply -f k8s/deployment.yaml`
+
+- **Criar o Persistent Volume Claim**:
+  - `kubectl apply -f k8s/pvc.yaml`
+
+- **Configurar o Serviço para Expor o Geoserver**:
+  - `kubectl apply -f k8s/service.yaml`
+
+- **Executar o Script de Configuração Inicial**:
+  - `bash k8s/setup.sh`
+
+- **Listar Todos os Pods no Namespace geoserver**:
+  - `kubectl get pods -n geoserver`
+
+- **Ver Logs do Pod Geoserver**:
+  - Primeiro encontre o nome do pod: `kubectl get pods -n geoserver`
+  - Em seguida, veja os logs: `kubectl logs <nome_do_pod_geoserver> -n geoserver`
+
 
 ---
 
