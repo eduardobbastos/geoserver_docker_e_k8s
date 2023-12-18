@@ -3,48 +3,8 @@ git clone http://apocalypse.anp.net/projetos-digitais/geoserver_sdt.git
 kubectl delete -f deployment.yaml
 kubectl delete -f namespace.yaml
 
-kubectl apply -f pvc.yaml
-kubectl apply -f pvc.yaml
-
 kubectl apply -f namespace.yaml
 kubectl apply -f service.yaml
 kubectl apply -f pvc.yaml
 kubectl apply -f deployment.yaml
-kubectl watch pods -n geoserver
-
-kubectl cp data_arquivos/. geoserver-79ccbb645-s6v8b:/opt/geoserver/data_dir -c geoserver
-kubectl exec -it geoserver-6f4877fc9d-tgczh: -- ls /opt/geoserver/data_dir
-
-
-kubectl logs geoserver-5dbc556787-9ckcp -n geoserver -c geoserver-server-mysql
-kubectl get services -n geoserver
-kubectl get pods -n geoserver
-kubectl describe service geoserver -n geoserver
-kubectl get events -n geoserver
-kubectl get pvc -n geoserver
-kubectl top nodes
-kubectl get pods -n geoserver
-kubectl logs geoserversdt-64bf954859-5db5r -n geoserver
-kubectl logs geoserversdt-64bf954859-5db5r -c geoserver
-
-kubectl logs geoserversdt-57bcd58c8b-hzlq4 --follow
-
-kubectl delete deployment geoserver -n geoserver
-kubectl describe pods geoserver -n geoserver
-kubectl apply -f deployment.yaml
-
-kubectl describe pods prometheus-k8s-0 -n ntnx-system
-kubectl describe pods geoserver -n geoserver
-
-
-kubectl get pv pvc-627e1625-6b40-4d52-82fd-073e63c7d224 -owide
-
-kubectl get pvc -n geoserver
-
-kubectl patch pvc geoservervol -n default -p '{"metadata":{"namespace":"geoserver"}}'
-pvc-627e1625-6b40-4d52-82fd-073e63c7d224
-
-kubectl exec -it geoserver-76948c5448-5xzm8 -n geoserver bash
-kubectl logs geoserver-5f65bc5867-gcvf2 -n geoserver
-
-kubectl config get-contexts
+watch pods -n geoserver
