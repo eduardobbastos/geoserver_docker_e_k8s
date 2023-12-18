@@ -1,40 +1,53 @@
-# Documentação do Kubernetes Deployment - Geoserver
+# Geoserver no Kubernetes - Documentação
 
-## Arquivo: k8s/deployment.yaml
+Este repositório contém os arquivos de configuração necessários para implantar o Geoserver no Kubernetes (K8s). Inclui configurações para Deployments, Services, Persistent Volume Claims e muito mais.
 
-### Visão Geral
-O arquivo de implantação define um Deployment para o Geoserver no Kubernetes. Ele especifica dois containers: `geoserverdb` (baseado na imagem `kartoza/postgis:latest`) e `geoserver` (baseado na imagem `kartoza/geoserver:latest`).
+## Índice
 
-### Configuração do Container `geoserverdb`
-- **Imagem**: `kartoza/postgis:latest`
-- **Variáveis de Ambiente**:
-  - Banco de dados, usuário, senha e outras configurações relacionadas ao Postgres.
-- **Recursos**:
-  - Limite de memória: 1000Mi
-  - Limite de CPU: 2000m
-- **Porta do Container**: 5432
+- [Visão Geral](#visão-geral)
+- [Configurações](#configurações)
+  - [Namespace](#namespace)
+  - [Deployment](#deployment)
+  - [Persistent Volume Claim (PVC)](#persistent-volume-claim-pvc)
+  - [Service](#service)
+- [Script de Configuração Inicial](#script-de-configuração-inicial)
+- [Estrutura de Arquivos](#estrutura-de-arquivos)
+- [Comandos Úteis](#comandos-úteis)
 
-### Configuração do Container `geoserver`
-- **Imagem**: `kartoza/geoserver:latest`
-- **Variáveis de Ambiente**:
-  - Configurações do Geoserver, incluindo credenciais de admin, configurações de memória, porta HTTP/HTTPS e outras.
-- **Recursos**:
-  - Limite de memória: 2000Mi
-  - Limite de CPU: 2000m
-- **Portas do Container**: 8080, 8443
-- **Montagem de Volume**:
-  - Monta um volume chamado `volumegeo` em `/opt/geoserver`.
+## Visão Geral
 
-### Volumes
-- Define um volume chamado `volumegeo` do tipo `emptyDir`.
+O projeto Geoserver no Kubernetes visa facilitar a implantação e gerenciamento do Geoserver, um servidor de mapas de código aberto, em um ambiente de orquestração de contêineres.
 
-### Replica
-- Define `replicas: 1`, significando uma única instância do Deployment.
+## Configurações
 
-### Seletores e Labels
-- Usa a label `app: geoserver` para associação entre o Deployment e seus Pods.
+### Namespace
 
-## Considerações
-- O Deployment é feito no namespace `geoserver`.
-- As configurações de limite de recursos garantem a alocação adequada de CPU e memória.
-- As portas e variáveis de ambiente são configuradas para garantir a conectividade e configuração corretas dos serviços.
+Definição do namespace `geoserver` para isolar os recursos do Geoserver dentro do cluster Kubernetes.
+
+### Deployment
+
+Configuração do Deployment do Geoserver e do banco de dados PostGIS, especificando imagens, variáveis de ambiente e recursos.
+
+### Persistent Volume Claim (PVC)
+
+Criação de um PVC chamado `volumegeo` para armazenamento persistente de dados geoespaciais.
+
+### Service
+
+Exposição do Geoserver através de um serviço Kubernetes, configurando NodePorts para acesso HTTP e HTTPS.
+
+## Script de Configuração Inicial
+
+Instruções para a execução do script `setup.sh`, que automatiza a configuração inicial do Geoserver no cluster.
+
+## Estrutura de Arquivos
+
+Lista dos arquivos de configuração do Kubernetes presentes no diretório `k8s`, incluindo `deployment.yaml`, `namespace.yaml`, `pvc.yaml`, `service.yaml` e `setup.sh`.
+
+## Comandos Úteis
+
+Coleção de comandos úteis para a gestão dos recursos do Kubernetes, como visualização de logs e inspeção de containers.
+
+---
+
+Este documento é uma referência para a implantação e gerenciamento do Geoserver no Kubernetes, fornecendo uma visão clara e detalhada das configurações e práticas recomendadas.
