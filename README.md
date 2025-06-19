@@ -42,3 +42,21 @@ O ambiente é composto por dois serviços: o banco de dados espacial PostGIS e o
 ├── docker-compose.yaml
 ├── .env
 ├── README.md
+
+
+## 📁 Arquivos do Projeto
+
+- `docker-compose.yaml`: Orquestração dos serviços GeoServer e PostGIS.
+- `.env`: Variáveis de ambiente para configurar o deploy.
+- `README.md`: Este documento.
+
+---
+
+## 🐳 Docker Compose
+
+### Serviço `db` (PostGIS)
+
+- **Imagem:** `docker.io/postgis/postgis:${POSTGIS_VERSION_TAG}`
+- **Container:** `geoserver_db_prod`
+- **Porta:** `${POSTGRES_PORT}:5432`
+- **Volume:** `geo-db-data:/var/lib/postgresql`
